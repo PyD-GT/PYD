@@ -2,56 +2,191 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Mi Empresa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrónica PYD - Soluciones IoT, Embebidos y Mecatrónica</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
-  <h1>Mi Empresa</h1>
-  <p>Soluciones profesionales para tu negocio</p>
-  <a href="https://wa.me/502XXXXXXXX" class="btn">Cotiza por WhatsApp</a>
+  <div class="logo-container">
+    <!-- 
+    INSTRUCCIONES PARA AGREGAR TU LOGO:
+    1. Guarda tu archivo logo.png o logo.jpg en la misma carpeta que este archivo HTML
+    2. Reemplaza "logo.png" en la línea de abajo con el nombre exacto de tu archivo
+    3. Si tu logo es JPG, cambia logo.png por logo.jpg
+    -->
+    <img src="logo.png" alt="Electrónica PYD Logo">
+    <h1>Electrónica PYD</h1>
+    <p class="tagline">Soluciones IoT, Embebidos y Mecatrónica Profesionales</p>
+    <a class="btn-whatsapp" href="#" id="whatsappBtn">
+      <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+    </a>
+  </div>
 </header>
 
-<section>
-  <h2>Quiénes somos</h2>
-  <p>Somos una empresa dedicada a brindar soluciones tecnológicas y comerciales.</p>
-</section>
+<div class="container">
+  <section class="about-section">
+    <h2>¿Quiénes somos?</h2>
+    <p style="font-size: 1.1em; margin-top: 20px;">
+      Electrónica PYD es una empresa especializada en soluciones electrónicas avanzadas, tecnología IoT, sistemas embebidos y mecatrónica. Ofrecemos diseño, fabricación e implementación de proyectos tecnológicos desde nivel escolar y universitario hasta soluciones profesionales.
+    </p>
+    <div class="pioneer-badge">
+      <p>
+        Pioneros en Guatemala y la región en fabricación de placas de prototipado a 2 caras con tecnología SMD y THT simultáneamente, con precisión desde 25 mils
+      </p>
+    </div>
+  </section>
 
-<section>
-  <h2>Misión</h2>
-  <p>Nuestra misión es ayudar a nuestros clientes a crecer.</p>
+  <div class="mission-vision">
+    <div class="card">
+      <h2>Misión</h2>
+      <p>Brindar soluciones tecnológicas confiables, innovadoras y a medida que impulsen el crecimiento y la competitividad de nuestros clientes mediante tecnología de vanguardia.</p>
+    </div>
+    <div class="card">
+      <h2>Visión</h2>
+      <p>Consolidarnos como la empresa líder en soluciones IoT, electrónica embebida y mecatrónica en Guatemala, reconocidos por nuestra excelencia técnica e innovación.</p>
+    </div>
+  </div>
 
-  <h2>Visión</h2>
-  <p>Ser líderes en nuestro sector en Guatemala.</p>
-</section>
+  <section class="card">
+    <h2>Nuestros Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Soluciones IoT y Embebidos</h3>
+        <ul>
+          <li>Desarrollo con ESP32, STM32, PICs</li>
+          <li>Sistemas con ATmega y Arduino</li>
+          <li>Aplicaciones embebidas Android y PC</li>
+          <li>Automatización industrial con PLCs</li>
+          <li>Desde nivel escolar hasta profesional</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Fabricación de PCBs</h3>
+        <ul>
+          <li>Pioneros en placas a 2 caras</li>
+          <li>Tecnología SMD y THT simultánea</li>
+          <li>Precisión desde 25 mils</li>
+          <li>Prototipos rápidos y confiables</li>
+          <li>Únicos en Guatemala y la región</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Diseño Electrónico (EDA)</h3>
+        <ul>
+          <li>Diseño PCB con EasyEDA</li>
+          <li>KiCAD y Fusion 360</li>
+          <li>Circuitos personalizados</li>
+          <li>Esquemáticos profesionales</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Impresión y Diseño 3D</h3>
+        <ul>
+          <li>Materiales técnicos (AP12, Nylon)</li>
+          <li>Nylon con fibra de carbono</li>
+          <li>Impresión PLA y PETG</li>
+          <li>Prototipos funcionales</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Prototipado CNC y Láser</h3>
+        <ul>
+          <li>Mecanizado CNC de precisión</li>
+          <li>Corte láser en diversos materiales</li>
+          <li>Grabado personalizado</li>
+          <li>Prototipos mecánicos rápidos</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Diseño CAD Certificado</h3>
+        <ul>
+          <li>SolidWorks certificado</li>
+          <li>Autodesk Inventor</li>
+          <li>Modelado 3D profesional</li>
+          <li>Planos técnicos</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Soluciones Mecatrónicas</h3>
+        <ul>
+          <li>Sistemas automatizados</li>
+          <li>Robótica industrial</li>
+          <li>Integración electromecánica</li>
+          <li>Control y monitoreo</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <h3>Soporte Técnico</h3>
+        <ul>
+          <li>Asesoría especializada</li>
+          <li>Mantenimiento de equipos</li>
+          <li>Instalaciones profesionales</li>
+          <li>Capacitación técnica</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>Servicios</h2>
-  <ul>
-    <li>Diseño web</li>
-    <li>Marketing digital</li>
-    <li>Soporte técnico</li>
-    <li>Ventas de productos</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Solicitar cotización</h2>
-  <form action="https://formsubmit.co/tucorreo@gmail.com" method="POST">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Correo" required>
-    <textarea name="mensaje" placeholder="Qué deseas cotizar"></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-</section>
+  <section class="contact-section">
+    <h2>Solicitar Cotización</h2>
+    <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
+      Cuéntanos sobre tu proyecto y te responderemos a la brevedad
+    </p>
+    <form action="https://formsubmit.co/electronicapyd@gmail.com" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+502 0000-0000">
+      </div>
+      
+      <div class="form-group">
+        <label for="mensaje">Describe tu proyecto</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas: tipo de proyecto, especificaciones, cantidad, etc." required></textarea>
+      </div>
+      
+      <button type="submit">Enviar Cotización</button>
+    </form>
+  </section>
+</div>
 
 <footer>
-  <p>Síguenos</p>
-  <a href="https://instagram.com/tuempresa">Instagram</a>
-  <a href="https://facebook.com/tuempresa">Facebook</a>
-  <a href="https://linkedin.com/company/tuempresa">LinkedIn</a>
+  <p style="font-size: 1.2em; margin-bottom: 10px; color: #ffd700;"><strong>Electrónica PYD</strong></p>
+  <div class="contact-info">
+    <p><i class="fas fa-envelope"></i> <a href="mailto:electronicapyd@gmail.com">electronicapyd@gmail.com</a></p>
+    <p><i class="fas fa-phone"></i> <a href="https://wa.me/50230228637">+502 3022-8637</a></p>
+  </div>
+  <div class="social-links">
+    <a href="https://www.instagram.com/electronicapyd" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/electronicapyd" target="_blank">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+    <a href="https://www.linkedin.com/company/electronicapyd" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
+  <p style="margin-top: 30px; opacity: 0.7;">© 2026 Electrónica PYD - Todos los derechos reservados</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
