@@ -137,14 +137,14 @@ h1 {
 }
 
 .card {
-  background: linear-gradient(135deg, #b8a1d6 0%, #d4c5e8 100%);
+  background: #2d1b4e;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 3px solid #9b7ec9;
+  border: 3px solid #8b5ac9;
   position: relative;
-  color: #2d1b4e;
+  color: #e0e0e0;
 }
 
 .card::before {
@@ -154,22 +154,22 @@ h1 {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #4a2c6d, #ffd700);
+  background: linear-gradient(90deg, #8b5ac9, #ffd700);
   border-radius: 8px 8px 0 0;
 }
 
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(139, 90, 201, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-color: #8b5ac9;
+  border-color: #ffd700;
 }
 
 .card h2 {
-  color: #4a2c6d;
+  color: #ffd700;
 }
 
 .card p {
-  color: #3d2657;
+  color: #e0e0e0;
 }
 
 h2 {
