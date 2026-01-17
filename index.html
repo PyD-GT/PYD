@@ -3,190 +3,693 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Electrónica PYD - Soluciones IoT, Embebidos y Mecatrónica</title>
+<title>Electrónica PYD - Innovación en IoT y Electrónica</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+  --color_wa: #39d40f;
+  --blanco: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  background: var(--gold);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--primary-purple);
+  font-size: 1.2rem;
+}
+
+.logo-text {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.logo-text span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+.btn-cotizar {
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-cotizar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.2);
+  color: var(--gold);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--gold);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 .highlight {
+  color: var(--gold);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-wa {
+  background: var(--color_wa);
+  color: var(--blanco);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 1);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.trust-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.trust-check {
+  color: #25D366;
+  font-size: 1.2rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip-card {
+  background: linear-gradient(135deg, rgba(139, 90, 201, 0.3), rgba(74, 44, 109, 0.5));
+  border: 3px solid var(--gold);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.chip-icon {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  background: var(--gold);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.chip-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--gold);
+  letter-spacing: 0.5rem;
+}
+
+.chip-detail {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+/* Sección Identidad */
+.identity-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+}
+
+.identity-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #b0b0b0;
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.identity-card {
+  background: linear-gradient(135deg, rgba(184, 161, 214, 0.2), rgba(139, 90, 201, 0.1));
+  padding: 3rem;
+  border-radius: 15px;
+  border: 2px solid var(--accent-purple);
+  transition: all 0.3s;
+}
+
+.identity-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(139, 90, 201, 0.4);
+}
+
+.identity-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.identity-card h3 {
+  color: var(--gold);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.identity-card p {
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* Pioneer Badge */
+.pioneer-section {
+  background: linear-gradient(135deg, var(--gold), #ffed4e);
+  padding: 3rem;
+  border-radius: 15px;
+  text-align: center;
+  color: var(--primary-purple);
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+}
+
+.pioneer-section h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pioneer-section p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* Proyecto CTA */
+.cta-section {
+  padding: 5rem 2rem;
+  background: var(--dark-bg);
+}
+
+.cta-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  padding: 4rem;
+  border-radius: 15px;
+  border: 2px solid var(--accent-purple);
+  text-align: center;
+}
+
+.cta-container h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-container p {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  color: #888;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--secondary-purple);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  background: var(--gold);
+  color: var(--primary-purple);
+  transform: translateY(-3px);
+}
+
+.footer-section h4 {
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  display: block;
+  padding: 0.3rem 0;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(139, 90, 201, 0.3);
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-description {
+    margin: 0 auto 2rem;
+  }
+  
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .chip-card {
+    padding: 2rem;
+  }
+  
+  .chip-icon {
+    width: 150px;
+    height: 150px;
+    font-size: 3rem;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
-<header>
-  <div class="logo-container">
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="Electrónica PYD Logo">
-    </div>
-    <h1>Electrónica PYD</h1>
-    <p class="tagline">Soluciones IoT, Embebidos y Mecatrónica Profesionales</p>
-    <a class="btn-whatsapp" href="#" id="whatsappBtn">
-      <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
-    </a>
-  </div>
-</header>
 
-<div class="container">
-  <section class="about-section">
-    <h2>¿Quiénes somos?</h2>
-    <p style="font-size: 1.1em; margin-top: 20px;">
-      Electrónica PYD es una empresa especializada en soluciones electrónicas avanzadas, tecnología IoT, sistemas embebidos y mecatrónica. Ofrecemos diseño, fabricación e implementación de proyectos tecnológicos desde nivel escolar y universitario hasta soluciones profesionales.
-    </p>
-    <div class="pioneer-badge">
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="#" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>
+        Innovación en<br>
+        <span class="highlight">IoT, Electrónica y Manufactura</span>
+      </h1>
+      <p class="hero-description">
+        Diseñamos el futuro del hardware. Desde soluciones IoT y electrónica embebida hasta manufactura de precisión con corte láser e impresión 3D. Proyectos técnicos, recuerdos personalizados y todo lo que imagines.
+      </p>
+      <div class="hero-buttons">
+        <a href="contacto.html" class="btn-primary">
+          Contacto
+        </a>
+        <a href="portafolio.html" class="btn-secondary">Ver Portafolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección Identidad -->
+<section class="identity-section">
+  <div class="identity-container">
+    <h2 class="section-title">NUESTRA IDENTIDAD</h2>
+    <div class="identity-grid">
+      <div class="identity-card">
+        <div class="identity-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Nuestra Misión</h3>
+        <p>
+          Brindar soluciones tecnológicas confiables, innovadoras y a medida que impulsen el crecimiento y la competitividad de nuestros clientes mediante tecnología de vanguardia.
+        </p>
+      </div>
+      
+      <div class="identity-card">
+        <div class="identity-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Nuestra Visión</h3>
+        <p>
+          Consolidarnos como la empresa líder en soluciones IoT, electrónica embebida y mecatrónica en Guatemala, reconocidos por nuestra excelencia técnica e innovación.
+        </p>
+      </div>
+    </div>
+    
+    <div class="pioneer-section">
+      <h3>Pioneros en Guatemala</h3>
       <p>
-        Pioneros en Guatemala y la región en fabricación de placas de prototipado a 2 caras con tecnología SMD y THT simultáneamente, con precisión desde 25 mils
+        Únicos en fabricación de placas de prototipado a 2 caras con tecnología SMD y THT simultáneamente, con precisión desde 25 mils. Innovación que marca la diferencia en la región.
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="mission-vision">
-    <div class="card">
-      <h2>Misión</h2>
-      <p>Brindar soluciones tecnológicas confiables, innovadoras y a medida que impulsen el crecimiento y la competitividad de nuestros clientes mediante tecnología de vanguardia.</p>
-    </div>
-    <div class="card">
-      <h2>Visión</h2>
-      <p>Consolidarnos como la empresa líder en soluciones IoT, electrónica embebida y mecatrónica en Guatemala, reconocidos por nuestra excelencia técnica e innovación.</p>
+<!-- CTA Proyecto -->
+<section class="cta-section">
+  <div class="cta-container">
+    <h2>¿Tienes un proyecto en mente?</h2>
+    <p>Nuestro equipo está listo para asesorarte en desarrollo electrónico, IoT, manufactura con corte láser e impresión 3D. Desde prototipos técnicos hasta recuerdos personalizados y llaveros grabados.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/50230228637?text=Hola,%20quiero%20solicitar%20una%20cotización%20con%20Electrónica%20PYD%20para%20un%20proyecto." target="_blank" class="btn-wa">
+        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+      </a>
+      <a href="contacto.html" class="btn-secondary">
+        <i class="fas fa-envelope"></i> Formulario de Contacto
+      </a>
     </div>
   </div>
+</section>
 
-  <section class="card">
-    <h2>Nuestros Servicios</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Soluciones IoT y Embebidos</h3>
-        <ul>
-          <li>Desarrollo con ESP32, STM32, PICs</li>
-          <li>Sistemas con ATmega y Arduino</li>
-          <li>Aplicaciones embebidas Android y PC</li>
-          <li>Automatización industrial con PLCs</li>
-          <li>Desde nivel escolar hasta profesional</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Fabricación de PCBs</h3>
-        <ul>
-          <li>Pioneros en placas a 2 caras</li>
-          <li>Tecnología SMD y THT simultánea</li>
-          <li>Precisión desde 25 mils</li>
-          <li>Prototipos rápidos y confiables</li>
-          <li>Únicos en Guatemala y la región</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Diseño Electrónico (EDA)</h3>
-        <ul>
-          <li>Diseño PCB con EasyEDA</li>
-          <li>KiCAD y Fusion 360</li>
-          <li>Circuitos personalizados</li>
-          <li>Esquemáticos profesionales</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Impresión y Diseño 3D</h3>
-        <ul>
-          <li>Materiales técnicos (AP12, Nylon)</li>
-          <li>Nylon con fibra de carbono</li>
-          <li>Impresión PLA y PETG</li>
-          <li>Prototipos funcionales</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Prototipado CNC y Láser</h3>
-        <ul>
-          <li>Mecanizado CNC de precisión</li>
-          <li>Corte láser en diversos materiales</li>
-          <li>Grabado personalizado</li>
-          <li>Prototipos mecánicos rápidos</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Diseño CAD Certificado</h3>
-        <ul>
-          <li>SolidWorks certificado</li>
-          <li>Autodesk Inventor</li>
-          <li>Modelado 3D profesional</li>
-          <li>Planos técnicos</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Soluciones Mecatrónicas</h3>
-        <ul>
-          <li>Sistemas automatizados</li>
-          <li>Robótica industrial</li>
-          <li>Integración electromecánica</li>
-          <li>Control y monitoreo</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <h3>Soporte Técnico</h3>
-        <ul>
-          <li>Asesoría especializada</li>
-          <li>Mantenimiento de equipos</li>
-          <li>Instalaciones profesionales</li>
-          <li>Capacitación técnica</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section">
-    <h2>Solicitar Cotización</h2>
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
-      Cuéntanos sobre tu proyecto y te responderemos a la brevedad
-    </p>
-    <form action="https://formsubmit.co/electronicapyd@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Nueva cotización - Electrónica PYD">
-      <input type="hidden" name="_next" value="https://pyd-gt.github.io/PYD/">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <div class="form-group">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="+502 0000-0000">
-      </div>
-      
-      <div class="form-group">
-        <label for="mensaje">Describe tu proyecto</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas: tipo de proyecto, especificaciones, cantidad, etc." required></textarea>
-      </div>
-      
-      <button type="submit">Enviar Cotización</button>
-    </form>
-  </section>
-</div>
-
+<!-- Footer -->
 <footer>
-  <p style="font-size: 1.2em; margin-bottom: 10px; color: #ffd700;"><strong>Electrónica PYD</strong></p>
-  <div class="contact-info">
-    <p><i class="fas fa-envelope"></i> <a href="mailto:electronicapyd@gmail.com">electronicapyd@gmail.com</a></p>
-    <p><i class="fas fa-phone"></i> <a href="https://wa.me/50230228637">+502 3022-8637</a></p>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Electrónica PYD</h3>
+      <p>Soluciones completas en electrónica, IoT, manufactura digital y personalización. De lo técnico a lo creativo, hacemos realidad tus ideas.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/electronicapyd" target="_blank" class="social-link">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/electronicapyd" target="_blank" class="social-link">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/electronicapyd" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Empresa</h4>
+      <ul class="footer-links">
+        <li><a href="nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="#">Software</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Soporte</h4>
+      <ul class="footer-links">
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="#">Tutoriales</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul class="footer-links">
+        <li><a href="#">Aviso de Privacidad</a></li>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="social-links">
-    <a href="https://www.instagram.com/electronicapyd" target="_blank">
-      <i class="fab fa-instagram"></i> Instagram
-    </a>
-    <a href="https://www.facebook.com/electronicapyd" target="_blank">
-      <i class="fab fa-facebook"></i> Facebook
-    </a>
-    <a href="https://www.linkedin.com/company/electronicapyd" target="_blank">
-      <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
+  
+  <div class="footer-bottom">
+    <p>2026 Electrónica PYD. Todos los derechos reservados. Tecnología hecha en Latinoamérica</p>
   </div>
-  <p style="margin-top: 30px; opacity: 0.7;">© 2026 Electrónica PYD - Todos los derechos reservados</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// Smooth scroll para navegación
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
 </body>
 </html>
