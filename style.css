@@ -237,7 +237,7 @@ h2::after {
 }
 
 .service-card li::before {
-  content: '▸';
+  content: 'â–¸';
   color: #4a2c6d;
   position: absolute;
   left: 0;
@@ -408,6 +408,4 @@ footer {
   .services-grid {
     grid-template-columns: 1fr;
   }
-
-  
 }

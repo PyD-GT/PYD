@@ -20,8 +20,6 @@
   --gold: #ffd700;
   --dark-bg: #1a0f2e;
   --text-light: #e0e0e0;
-  --color_wa: #39d40f;
-  --blanco: #ffffff;
 }
 
 body {
@@ -193,39 +191,19 @@ nav {
 }
 
 .btn-secondary {
-  background: var(--gold);
-  color: var(--primary-purple);
+  background: transparent;
+  color: var(--text-light);
   padding: 1rem 2rem;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  border: 2px solid var(--accent-purple);
   transition: all 0.3s;
 }
 
 .btn-secondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-}
-
-.btn-wa {
-  background: var(--color_wa);
-  color: var(--blanco);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s;
-}
-
-.btn-wa:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 1);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .trust-badge {
@@ -540,13 +518,13 @@ footer {
 </style>
 </head>
 <body>
+
 <!-- Navegación -->
 <nav>
   <div class="nav-container">
     <a href="#" class="logo-nav">
-      <img src="logo.png" alt="Electrónica PYD">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
     </a>
-
     <ul class="nav-links">
       <li><a href="#" class="active">Inicio</a></li>
       <li><a href="productos.html">Productos</a></li>
@@ -556,7 +534,6 @@ footer {
     </ul>
   </div>
 </nav>
-
 
 <!-- Hero Section -->
 <section class="hero">
@@ -576,6 +553,15 @@ footer {
         <a href="portafolio.html" class="btn-secondary">Ver Portafolio</a>
       </div>
     </div>
+    
+    <div class="hero-visual">
+      <div class="chip-card">
+        <div class="chip-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <div class="chip-text">PYD</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -583,6 +569,8 @@ footer {
 <section class="identity-section">
   <div class="identity-container">
     <h2 class="section-title">NUESTRA IDENTIDAD</h2>
+    <p class="section-subtitle">Ingeniería que transforma realidades</p>
+    
     <div class="identity-grid">
       <div class="identity-card">
         <div class="identity-icon"><i class="fas fa-rocket"></i></div>
@@ -616,7 +604,7 @@ footer {
     <h2>¿Tienes un proyecto en mente?</h2>
     <p>Nuestro equipo está listo para asesorarte en desarrollo electrónico, IoT, manufactura con corte láser e impresión 3D. Desde prototipos técnicos hasta recuerdos personalizados y llaveros grabados.</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/50230228637?text=Hola,%20quiero%20solicitar%20una%20cotización%20con%20Electrónica%20PYD%20para%20un%20proyecto." target="_blank" class="btn-wa">
+      <a href="https://wa.me/50230228637?text=Hola,%20quiero%20solicitar%20una%20cotización%20con%20Electrónica%20PYD%20para%20un%20proyecto." target="_blank" class="btn-primary">
         <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
       </a>
       <a href="contacto.html" class="btn-secondary">
