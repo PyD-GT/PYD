@@ -51,6 +51,8 @@ nav {
 
 .logo-nav img {
   max-height: 48px;   
+  max-width: 160px; 
+  height: auto;
   width: auto;
   display: block;
 }
