@@ -114,3 +114,11 @@ footer {
     max-height: 40px;
   }
 }
+/* FIX ABSOLUTO PARA LOGO */
+.logo-nav img {
+  width: auto !important;
+  height: auto !important;
+  max-height: 48px !important;
+  max-width: 180px !important;
+  display: block;
+}
