@@ -45,12 +45,11 @@ nav {
 
 /* ===== LOGO (A PRUEBA DE TODO) ===== */
 .logo-nav {
-  display: flex;
-  align-items: center;
+  max-width: 120px;
+  overflow: hidden;
 }
 
 .logo-nav img {
-  background: red;
   max-height: 48px;   
   max-width: 100px; 
   height: auto;
