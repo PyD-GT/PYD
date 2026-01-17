@@ -37,11 +37,13 @@ nav {
 }
 
 /* LOGO AUTOMÁTICO */
-.logo-nav {
-  height: 100%;
-  display: flex;
-  align-items: center;
+.logo-nav img {
+  max-height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
+
 
 .logo-nav img {
   height: 100%;
