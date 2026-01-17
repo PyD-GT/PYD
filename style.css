@@ -30,12 +30,14 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 70px;
+
 }
 
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 0 24px; 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +50,7 @@ nav {
 }
 
 .logo-nav img {
-  max-height: 48px;   /* 👈 control total */
+  max-height: 48px;   
   width: auto;
   display: block;
 }
