@@ -10,12 +10,6 @@
 <body>
 <header>
   <div class="logo-container">
-    <!-- 
-    INSTRUCCIONES PARA AGREGAR TU LOGO:
-    1. Guarda tu archivo logo.png o logo.jpg en la misma carpeta que este archivo HTML
-    2. Reemplaza "logo.png" en la línea de abajo con el nombre exacto de tu archivo
-    3. Si tu logo es JPG, cambia logo.png por logo.jpg
-    -->
     <div class="logo-wrapper">
       <img src="logo.png" alt="Electrónica PYD Logo">
     </div>
@@ -144,6 +138,10 @@
       Cuéntanos sobre tu proyecto y te responderemos a la brevedad
     </p>
     <form action="https://formsubmit.co/electronicapyd@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nueva cotización - Electrónica PYD">
+      <input type="hidden" name="_next" value="https://pyd-gt.github.io/PYD/">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
       <div class="form-group">
         <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" required>
