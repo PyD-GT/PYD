@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos - Electrónica PYD</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* Carrito flotante */
+.cart-btn {
+  position: relative;
+  background: var(--gold);
+  color: var(--primary-purple);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.cart-count {
+  background: var(--primary-purple);
+  color: var(--gold);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Mini Carrito */
+.mini-cart {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: var(--dark-bg);
+  border-left: 3px solid var(--accent-purple);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+  z-index: 2000;
+  transition: right 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-cart.active {
+  right: 0;
+}
+
+.cart-header {
+  background: var(--secondary-purple);
+  padding: 1.5rem;
+  border-bottom: 2px solid var(--accent-purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h3 {
+  color: var(--gold);
+  font-size: 1.3rem;
+}
+
+.close-cart {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-cart:hover {
+  color: var(--gold);
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.cart-item {
+  background: rgba(139, 90, 201, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  border: 1px solid var(--accent-purple);
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  background: rgba(184, 161, 214, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 2rem;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h4 {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+  color: var(--light-purple);
+  font-weight: bold;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.qty-btn {
+  background: var(--accent-purple);
+  border: none;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.qty-btn:hover {
+  background: var(--gold);
+  color: var(--primary-purple);
+}
+
+.remove-item {
+  background: #dc3545;
+  border: none;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s;
+}
+
+.remove-item:hover {
+  background: #c82333;
+}
+
+.cart-footer {
+  background: var(--secondary-purple);
+  padding: 1.5rem;
+  border-top: 2px solid var(--accent-purple);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cart-total span:last-child {
+  color: var(--gold);
+}
+
+.checkout-btn {
+  width: 100%;
+  background: var(--gold);
+  color: var(--primary-purple);
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #888;
+}
+
+.empty-cart i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+/* Header Page */
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-header .highlight {
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Filtros */
+.filters {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: rgba(139, 90, 201, 0.3);
+  border: 2px solid var(--accent-purple);
+  color: var(--text-light);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--gold);
+  color: var(--primary-purple);
+  border-color: var(--gold);
+}
+
+/* Productos Grid */
+.products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid var(--accent-purple);
+  transition: all 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(139, 90, 201, 0.4);
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, rgba(184, 161, 214, 0.3), rgba(139, 90, 201, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 4rem;
+  border-bottom: 2px solid var(--accent-purple);
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-category {
+  color: var(--light-purple);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-name {
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-description {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  background: var(--gold);
+  color: var(--primary-purple);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-container p {
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .mini-cart {
+    width: 100%;
+    right: -100%;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+        <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html" class="active">Productos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <button class="cart-btn" id="cartToggle">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mini Carrito -->
+<div class="mini-cart" id="miniCart">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-cart"></i> Mi Carrito</h3>
+    <button class="close-cart" id="closeCart">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart">
+      <i class="fas fa-shopping-cart"></i>
+      <p>Tu carrito está vacío</p>
+    </div>
+  </div>
+  
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotal">Q0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">
+      <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>Nuestros <span class="highlight">Productos</span></h1>
+  <p>Componentes electrónicos, kits IoT y soluciones de manufactura digital de alta calidad</p>
+</section>
+
+<!-- Filtros -->
+<div class="filters">
+  <button class="filter-btn active" data-category="todos">Todos</button>
+  <button class="filter-btn" data-category="iot">IoT y Sensores</button>
+  <button class="filter-btn" data-category="componentes">Componentes</button>
+  <button class="filter-btn" data-category="manufactura">Manufactura</button>
+  <button class="filter-btn" data-category="kits">Kits y Desarrollo</button>
+</div>
+
+<!-- Productos -->
+<div class="products-container">
+  <div class="products-grid" id="productsGrid">
+    
+    <!-- Producto 1 -->
+    <div class="product-card" data-category="iot">
+      <div class="product-image">
+        <i class="fas fa-microchip"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">IoT y Sensores</div>
+        <h3 class="product-name">ESP32 DevKit</h3>
+        <p class="product-description">Módulo de desarrollo WiFi + Bluetooth con 38 pines GPIO</p>
+        <div class="product-footer">
+          <span class="product-price">Q75.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"ESP32 DevKit","price":75,"category":"iot"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="product-card" data-category="iot">
+      <div class="product-image">
+        <i class="fas fa-temperature-high"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">IoT y Sensores</div>
+        <h3 class="product-name">Sensor DHT22</h3>
+        <p class="product-description">Sensor de temperatura y humedad de alta precisión</p>
+        <div class="product-footer">
+          <span class="product-price">Q45.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"Sensor DHT22","price":45,"category":"iot"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="product-card" data-category="componentes">
+      <div class="product-image">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Componentes</div>
+        <h3 class="product-name">PCB Personalizado</h3>
+        <p class="product-description">Placas impresas de 2 caras con tecnología SMD/THT</p>
+        <div class="product-footer">
+          <span class="product-price">Q200.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"PCB Personalizado","price":200,"category":"componentes"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="product-card" data-category="manufactura">
+      <div class="product-image">
+        <i class="fas fa-cube"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Manufactura</div>
+        <h3 class="product-name">Impresión 3D</h3>
+        <p class="product-description">Servicio de impresión 3D en PLA, ABS y PETG</p>
+        <div class="product-footer">
+          <span class="product-price">Q5.00/g</span>
+          <button class="add-to-cart-btn" data-product='{"name":"Impresión 3D","price":5,"category":"manufactura"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 5 -->
+    <div class="product-card" data-category="manufactura">
+      <div class="product-image">
+        <i class="fas fa-cut"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Manufactura</div>
+        <h3 class="product-name">Corte Láser</h3>
+        <p class="product-description">Corte y grabado láser en acrílico, madera y MDF</p>
+        <div class="product-footer">
+          <span class="product-price">Q50.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"Corte Láser","price":50,"category":"manufactura"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 6 -->
+    <div class="product-card" data-category="kits">
+      <div class="product-image">
+        <i class="fas fa-box-open"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Kits y Desarrollo</div>
+        <h3 class="product-name">Kit Arduino Starter</h3>
+        <p class="product-description">Kit completo para iniciarse en electrónica y programación</p>
+        <div class="product-footer">
+          <span class="product-price">Q350.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"Kit Arduino Starter","price":350,"category":"kits"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 7 -->
+    <div class="product-card" data-category="iot">
+      <div class="product-image">
+        <i class="fas fa-wifi"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">IoT y Sensores</div>
+        <h3 class="product-name">NodeMCU ESP8266</h3>
+        <p class="product-description">Placa de desarrollo WiFi compatible con Arduino</p>
+        <div class="product-footer">
+          <span class="product-price">Q55.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"NodeMCU ESP8266","price":55,"category":"iot"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 8 -->
+    <div class="product-card" data-category="componentes">
+      <div class="product-image">
+        <i class="fas fa-bolt"></i>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Componentes</div>
+        <h3 class="product-name">Fuente de Poder 5V 2A</h3>
+        <p class="product-description">Adaptador regulado ideal para proyectos electrónicos</p>
+        <div class="product-footer">
+          <span class="product-price">Q35.00</span>
+          <button class="add-to-cart-btn" data-product='{"name":"Fuente de Poder 5V 2A","price":35,"category":"componentes"}'>
+            <i class="fas fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <p>2026 Electrónica PYD. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// Carrito de compras
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Toggle carrito
+document.getElementById('cartToggle').addEventListener('click', () => {
+  document.getElementById('miniCart').classList.add('active');
+});
+
+document.getElementById('closeCart').addEventListener('click', () => {
+  document.getElementById('miniCart').classList.remove('active');
+});
+
+// Actualizar contador del carrito
+function updateCartCount() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+// Actualizar total
+function updateCartTotal() {
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  document.getElementById('cartTotal').textContent = `Q${total.toFixed(2)}`;
+}
+
+// Renderizar carrito
+function renderCart() {
+  const cartItemsContainer = document.getElementById('cartItems');
+  
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Tu carrito está vacío</p>
+      </div>
+    `;
+  } else {
+    cartItemsContainer.innerHTML = cart.map((item, index) => `
+      <div class="cart-item">
+        <div class="cart-item-image">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <div class="cart-item-details">
+          <h4>${item.name}</h4>
+          <div class="cart-item-price">Q${item.price.toFixed(2)}</div>
+          <div class="cart-item-quantity">
+            <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+            <span>${item.quantity}</span>
+            <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+          </div>
+          <button class="remove-item" onclick="removeItem(${index})">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  updateCartCount();
+  updateCartTotal();
+}
+
+// Agregar al carrito
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const product = JSON.parse(this.dataset.product);
+    
+    const existingItem = cart.find(item => item.name === product.name);
+    
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+    
+    // Abrir carrito
+    document.getElementById('miniCart').classList.add('active');
+    
+    // Feedback visual
+    this.innerHTML = '<i class="fas fa-check"></i> Agregado';
+    setTimeout(() => {
+      this.innerHTML = '<i class="fas fa-cart-plus"></i> Agregar';
+    }, 1000);
+  });
+});
+
+// Cambiar cantidad
+function changeQuantity(index, change) {
+  cart[index].quantity += change;
+  
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+  
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+// Eliminar item
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+// Enviar por WhatsApp
+document.getElementById('checkoutBtn').addEventListener('click', function() {
+  if (cart.length === 0) {
+    alert('Tu carrito está vacío');
+    return;
+  }
+  
+  let mensaje = 'Hola, quiero solicitar una cotización para los siguientes productos:%0A%0A';
+  
+  cart.forEach((item, index) => {
+    mensaje += `${index + 1}. ${item.name}%0A`;
+    mensaje += `   Cantidad: ${item.quantity}%0A`;
+    mensaje += `   Precio unitario: Q${item.price.toFixed(2)}%0A`;
+    mensaje += `   Subtotal: Q${(item.price * item.quantity).toFixed(2)}%0A%0A`;
+  });
+  
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  mensaje += `*TOTAL: Q${total.toFixed(2)}*`;
+  
+  window.open(`https://wa.me/50230228637?text=${mensaje}`, '_blank');
+});
+
+// Filtros
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Actualizar botón activo
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    const category = this.dataset.category;
+    const products = document.querySelectorAll('.product-card');
+    
+    products.forEach(product => {
+      if (category === 'todos' || product.dataset.category === category) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Inicializar carrito
+renderCart();
+</script>
+
+</body>
+</html>

@@ -430,9 +430,11 @@ footer {
     <a href="index.html" class="logo-nav">
       <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
     </a>
-    <ul class="nav-links">
+        <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="productos.html">Productos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
       <li><a href="portafolio.html">Portafolio</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html" class="active">Contacto</a></li>
@@ -459,7 +461,7 @@ footer {
           <i class="fas fa-envelope"></i>
           <div class="contact-method-content">
             <h4>Correo Electrónico</h4>
-            <a href="mailto:electronicapyd@gmail.com">electronicapyd@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#096c656c6a7d7b6667606a6879706d496e64686065276a6664"><span class="__cf_email__" data-cfemail="086d646d6b7c7a6766616b6978716c486f65696164266b6765">[email&#160;protected]</span></a>
           </div>
         </div>
         
@@ -564,7 +566,7 @@ footer {
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Form Validation
 const form = document.querySelector('form');
 form.addEventListener('submit', function(e) {
@@ -573,17 +575,4 @@ form.addEventListener('submit', function(e) {
   
   if (nombre.length < 3) {
     alert('Por favor ingresa un nombre válido (mínimo 3 caracteres).');
-    e.preventDefault();
-    return false;
-  }
-  
-  if (mensaje.length < 10) {
-    alert('Por favor describe tu proyecto con más detalle (mínimo 10 caracteres).');
-    e.preventDefault();
-    return false;
-  }
-});
-</script>
-
-</body>
-</html>
+ 

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas Frecuentes - Electrónica PYD</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* Header Page */
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-header .highlight {
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* FAQ Container */
+.faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.faq-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.category-btn {
+  background: rgba(139, 90, 201, 0.3);
+  border: 2px solid var(--accent-purple);
+  color: var(--text-light);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background: var(--gold);
+  color: var(--primary-purple);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.faq-item {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid var(--accent-purple);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  border-color: var(--gold);
+}
+
+.faq-question {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.faq-question h3 {
+  color: var(--gold);
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+.faq-icon {
+  color: var(--gold);
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: rgba(26, 15, 46, 0.5);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 1.5rem;
+  border-top: 2px solid var(--accent-purple);
+}
+
+.faq-answer p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.faq-answer li {
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+/* Contact CTA */
+.contact-cta {
+  background: linear-gradient(135deg, var(--light-purple), #d4c5e8);
+  padding: 3rem;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 3rem;
+  border: 3px solid var(--accent-purple);
+}
+
+.contact-cta h2 {
+  color: var(--secondary-purple);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.contact-cta p {
+  color: var(--primary-purple);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.btn-contact {
+  background: var(--secondary-purple);
+  color: var(--gold);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: all 0.3s;
+  border: 2px solid var(--secondary-purple);
+}
+
+.btn-contact:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(74, 44, 109, 0.5);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-container p {
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .faq-question h3 {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>Preguntas <span class="highlight">Frecuentes</span></h1>
+  <p>Encuentra respuestas a las preguntas más comunes sobre nuestros servicios</p>
+</section>
+
+<!-- FAQ Content -->
+<div class="faq-container">
+  
+  <div class="faq-categories">
+    <button class="category-btn active" data-category="all">Todas</button>
+    <button class="category-btn" data-category="general">General</button>
+    <button class="category-btn" data-category="servicios">Servicios</button>
+    <button class="category-btn" data-category="productos">Productos</button>
+    <button class="category-btn" data-category="pagos">Pagos y Envíos</button>
+  </div>
+
+  <div class="faq-list">
+    
+    <!-- General -->
+    <div class="faq-item" data-category="general">
+      <div class="faq-question">
+        <h3>¿Qué es Electrónica PYD?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Electrónica PYD es una empresa guatemalteca especializada en soluciones IoT, electrónica embebida, manufactura digital y desarrollo de software. Ofrecemos servicios completos desde el diseño hasta la manufactura de dispositivos electrónicos.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="general">
+      <div class="faq-question">
+        <h3>¿Dónde están ubicados?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Estamos ubicados en Mixco, Guatemala. Ofrecemos entregas en toda Guatemala y envíos internacionales bajo pedido.</p>
+      </div>
+    </div>
+
+    <!-- Servicios -->
+    <div class="faq-item" data-category="servicios">
+      <div class="faq-question">
+        <h3>¿Qué servicios de manufactura ofrecen?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Ofrecemos los siguientes servicios de manufactura:</p>
+        <ul>
+          <li>Fabricación de PCBs de 2 caras con tecnología SMD/THT</li>
+          <li>Impresión 3D en PLA, ABS y PETG</li>
+          <li>Corte y grabado láser en acrílico, madera y MDF</li>
+          <li>Ensamblaje de dispositivos electrónicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="servicios">
+      <div class="faq-question">
+        <h3>¿Hacen proyectos personalizados de IoT?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, diseñamos y desarrollamos proyectos IoT completamente personalizados. Esto incluye diseño de hardware, desarrollo de firmware, integración con la nube y desarrollo de aplicaciones móviles/web.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="servicios">
+      <div class="faq-question">
+        <h3>¿Cuál es el tiempo de entrega de un PCB?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>El tiempo de entrega para PCBs varía según la complejidad:</p>
+        <ul>
+          <li>PCBs simples (1 capa): 3-5 días hábiles</li>
+          <li>PCBs de 2 caras: 5-7 días hábiles</li>
+          <li>Proyectos con ensamblaje: 7-10 días hábiles</li>
+        </ul>
+        <p>Ofrecemos servicio express con recargo adicional.</p>
+      </div>
+    </div>
+
+    <!-- Productos -->
+    <div class="faq-item" data-category="productos">
+      <div class="faq-question">
+        <h3>¿Venden componentes electrónicos?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, tenemos una amplia variedad de componentes electrónicos en stock, incluyendo microcontroladores (ESP32, ESP8266, Arduino), sensores, actuadores, fuentes de poder y más.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="productos">
+      <div class="faq-question">
+        <h3>¿Tienen garantía los productos?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Todos nuestros productos cuentan con garantía de fábrica. Los componentes nuevos tienen 30 días de garantía contra defectos de fabricación. Los productos desarrollados por nosotros tienen 90 días de garantía.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="productos">
+      <div class="faq-question">
+        <h3>¿Puedo solicitar una demostración del software?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, ofrecemos versiones de prueba de nuestro software por 30 días. Visita nuestra página de Software para descargar las versiones de evaluación.</p>
+      </div>
+    </div>
+
+    <!-- Pagos y Envíos -->
+    <div class="faq-item" data-category="pagos">
+      <div class="faq-question">
+        <h3>¿Qué métodos de pago aceptan?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Aceptamos los siguientes métodos de pago:</p>
+        <ul>
+          <li>Transferencias bancarias</li>
+          <li>Depósitos en efectivo</li>
+          <li>Tarjetas de crédito/débito (con recargo del 3%)</li>
+          <li>Pago contra entrega (solo en Guatemala)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="pagos">
+      <div class="faq-question">
+        <h3>¿Hacen envíos a todo el país?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, realizamos envíos a toda Guatemala. Los costos de envío varían según la ubicación y el peso del paquete. Para pedidos mayores a Q500 el envío es gratis dentro de la ciudad de Guatemala.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="pagos">
+      <div class="faq-question">
+        <h3>¿Puedo recoger mi pedido personalmente?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, ofrecemos la opción de recoger tu pedido en nuestras instalaciones en Mixco. Solo coordina con nosotros el día y hora de tu visita.</p>
+      </div>
+    </div>
+
+    <!-- Servicios adicionales -->
+    <div class="faq-item" data-category="servicios">
+      <div class="faq-question">
+        <h3>¿Ofrecen capacitaciones o cursos?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, ofrecemos cursos y talleres sobre Arduino, ESP32, IoT, diseño de PCBs y más. Consulta nuestro calendario de capacitaciones o solicita un curso personalizado para tu empresa o institución.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="servicios">
+      <div class="faq-question">
+        <h3>¿Dan soporte técnico?</h3>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Sí, ofrecemos soporte técnico para todos nuestros productos y servicios. Puedes contactarnos por WhatsApp, correo electrónico o formulario de contacto. El tiempo de respuesta promedio es de 2 horas en días hábiles.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Contact CTA -->
+  <div class="contact-cta">
+    <h2>¿No encontraste tu respuesta?</h2>
+    <p>Contáctanos y con gusto te ayudaremos</p>
+    <a href="contacto.html" class="btn-contact">
+      <i class="fas fa-envelope"></i> Enviar Mensaje
+    </a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <p>2026 Electrónica PYD. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// Toggle FAQ items
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const faqItem = question.parentElement;
+    const wasActive = faqItem.classList.contains('active');
+    
+    // Cerrar todos los items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Abrir el item clickeado si no estaba activo
+    if (!wasActive) {
+      faqItem.classList.add('active');
+    }
+  });
+});
+
+// Category filtering
+document.querySelectorAll('.category-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Update active button
+    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    const category = this.dataset.category;
+    
+    // Filter FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (category === 'all' || item.dataset.category === category) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+        item.classList.remove('active');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

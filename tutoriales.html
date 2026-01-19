@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutoriales - Electrónica PYD</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* Header Page */
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-header .highlight {
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Tutorials Container */
+.tutorials-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.tutorial-card {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid var(--accent-purple);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 50px rgba(139, 90, 201, 0.5);
+}
+
+.tutorial-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(184, 161, 214, 0.3), rgba(139, 90, 201, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid var(--accent-purple);
+  position: relative;
+}
+
+.tutorial-icon {
+  font-size: 4rem;
+  color: var(--gold);
+}
+
+.tutorial-level {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.tutorial-content {
+  padding: 2rem;
+}
+
+.tutorial-category {
+  color: var(--light-purple);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.tutorial-content h3 {
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-description {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.tutorial-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--light-purple);
+  font-size: 0.9rem;
+}
+
+.tutorial-meta i {
+  color: var(--gold);
+  margin-right: 0.3rem;
+}
+
+.btn-tutorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  border: 2px solid var(--gold);
+}
+
+.btn-tutorial:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Coming Soon Badge */
+.coming-soon {
+  background: rgba(139, 90, 201, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid var(--accent-purple);
+  margin-top: 3rem;
+}
+
+.coming-soon h2 {
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.coming-soon p {
+  color: var(--text-light);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-container p {
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .tutorials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>Tutoriales y <span class="highlight">Guías</span></h1>
+  <p>Aprende electrónica, IoT y manufactura digital con nuestros tutoriales paso a paso</p>
+</section>
+
+<!-- Tutorials -->
+<div class="tutorials-container">
+  
+  <div class="tutorials-grid">
+    
+    <!-- Tutorial 1 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-microchip tutorial-icon"></i>
+        <span class="tutorial-level">Principiante</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">Arduino</div>
+        <h3>Primeros pasos con Arduino</h3>
+        <p class="tutorial-description">
+          Aprende los fundamentos de Arduino desde cero. Instalación del IDE, primer programa y conexión de componentes básicos.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 30 min</span>
+          <span><i class="fas fa-signal"></i> Básico</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+    <!-- Tutorial 2 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-wifi tutorial-icon"></i>
+        <span class="tutorial-level">Intermedio</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">IoT</div>
+        <h3>Conecta ESP32 a WiFi</h3>
+        <p class="tutorial-description">
+          Configura tu ESP32 para conectarse a internet y enviar datos a la nube. Incluye ejemplos de código completos.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 45 min</span>
+          <span><i class="fas fa-signal"></i> Intermedio</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+    <!-- Tutorial 3 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-temperature-high tutorial-icon"></i>
+        <span class="tutorial-level">Principiante</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">Sensores</div>
+        <h3>Sensor DHT22 con Arduino</h3>
+        <p class="tutorial-description">
+          Lee temperatura y humedad con el sensor DHT22. Aprende a calibrar y mostrar datos en un display LCD.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 25 min</span>
+          <span><i class="fas fa-signal"></i> Básico</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+    <!-- Tutorial 4 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-project-diagram tutorial-icon"></i>
+        <span class="tutorial-level">Avanzado</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">PCB Design</div>
+        <h3>Diseña tu primer PCB</h3>
+        <p class="tutorial-description">
+          Guía completa para diseñar placas de circuito impreso. Desde el esquemático hasta los archivos Gerber.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 2 hrs</span>
+          <span><i class="fas fa-signal"></i> Avanzado</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+    <!-- Tutorial 5 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-cube tutorial-icon"></i>
+        <span class="tutorial-level">Principiante</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">Impresión 3D</div>
+        <h3>Preparación de archivos STL</h3>
+        <p class="tutorial-description">
+          Aprende a preparar modelos 3D para impresión. Configuración de slicer, soportes y parámetros óptimos.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 40 min</span>
+          <span><i class="fas fa-signal"></i> Básico</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+    <!-- Tutorial 6 -->
+    <div class="tutorial-card">
+      <div class="tutorial-image">
+        <i class="fas fa-cut tutorial-icon"></i>
+        <span class="tutorial-level">Intermedio</span>
+      </div>
+      <div class="tutorial-content">
+        <div class="tutorial-category">Corte Láser</div>
+        <h3>Diseño vectorial para láser</h3>
+        <p class="tutorial-description">
+          Crea diseños profesionales para corte y grabado láser. Tips para optimizar tiempos y calidad.
+        </p>
+        <div class="tutorial-meta">
+          <span><i class="fas fa-clock"></i> 50 min</span>
+          <span><i class="fas fa-signal"></i> Intermedio</span>
+        </div>
+        <a href="#" class="btn-tutorial">
+          <i class="fas fa-play"></i> Ver Tutorial
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Coming Soon -->
+  <div class="coming-soon">
+    <h2>Más tutoriales próximamente</h2>
+    <p>
+      Estamos trabajando en más contenido educativo. Síguenos en nuestras redes sociales para estar al tanto de nuevos tutoriales, 
+      cursos en vivo y webinars gratuitos.
+    </p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <p>2026 Electrónica PYD. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// Placeholder for future tutorial links
+document.querySelectorAll('.btn-tutorial').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('Este tutorial estará disponible próximamente. Síguenos en redes sociales para estar al tanto de nuevos contenidos.');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios - Electrónica PYD</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* Header Page */
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-header .highlight {
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Services Container */
+.services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.service-card {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  padding: 3rem;
+  border-radius: 15px;
+  border: 3px solid var(--accent-purple);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--gold));
+  border-radius: 15px 15px 0 0;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 50px rgba(139, 90, 201, 0.5);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.service-card h3 {
+  color: var(--gold);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.service-features {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.service-features li {
+  padding: 0.7rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: var(--text-light);
+  border-left: 3px solid var(--accent-purple);
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-features li::before {
+  content: '▸';
+  position: absolute;
+  left: -1.5rem;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.service-price {
+  background: rgba(139, 90, 201, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  text-align: center;
+  border: 2px solid var(--accent-purple);
+}
+
+.service-price span {
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btn-request {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--gold);
+  color: var(--primary-purple);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  transition: all 0.3s;
+  border: 2px solid var(--gold);
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-request:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--light-purple), #d4c5e8);
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 3px solid var(--accent-purple);
+  margin-top: 3rem;
+}
+
+.cta-section h2 {
+  color: var(--secondary-purple);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: var(--primary-purple);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--secondary-purple);
+  color: var(--gold);
+  padding: 1.2rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: all 0.3s;
+  border: 2px solid var(--secondary-purple);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(74, 44, 109, 0.5);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-container p {
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    padding: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="servicios.html" class="active">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>Nuestros <span class="highlight">Servicios</span></h1>
+  <p>Soluciones completas en electrónica, IoT, manufactura digital y personalización</p>
+</section>
+
+<!-- Services -->
+<div class="services-container">
+  
+  <div class="services-grid">
+    
+    <!-- Servicio 1 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-microchip"></i>
+      </div>
+      <h3>Desarrollo IoT</h3>
+      <p>Diseñamos y desarrollamos soluciones IoT personalizadas para tu negocio o proyecto.</p>
+      <ul class="service-features">
+        <li>Diseño de hardware a medida</li>
+        <li>Programación de firmware</li>
+        <li>Integración con la nube</li>
+        <li>Aplicaciones móviles y web</li>
+        <li>Sensores y actuadores</li>
+      </ul>
+      <div class="service-price">
+        <span>Desde Q2,500</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Cotización
+      </a>
+    </div>
+
+    <!-- Servicio 2 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <h3>Diseño de PCB</h3>
+      <p>Fabricación de placas de circuito impreso de 2 caras con tecnología SMD y THT.</p>
+      <ul class="service-features">
+        <li>Diseño de esquemáticos</li>
+        <li>Layout profesional</li>
+        <li>Placas a 2 caras</li>
+        <li>Tecnología SMD/THT</li>
+        <li>Precisión desde 25 mils</li>
+      </ul>
+      <div class="service-price">
+        <span>Desde Q200</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Cotización
+      </a>
+    </div>
+
+    <!-- Servicio 3 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h3>Impresión 3D</h3>
+      <p>Prototipado rápido y manufactura de piezas en diversos materiales.</p>
+      <ul class="service-features">
+        <li>PLA, ABS, PETG</li>
+        <li>Alta precisión</li>
+        <li>Prototipos funcionales</li>
+        <li>Piezas personalizadas</li>
+        <li>Entregas rápidas</li>
+      </ul>
+      <div class="service-price">
+        <span>Desde Q5.00/g</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Cotización
+      </a>
+    </div>
+
+    <!-- Servicio 4 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-cut"></i>
+      </div>
+      <h3>Corte y Grabado Láser</h3>
+      <p>Corte y grabado de precisión en diversos materiales.</p>
+      <ul class="service-features">
+        <li>Acrílico, madera, MDF</li>
+        <li>Grabado personalizado</li>
+        <li>Llaveros y recuerdos</li>
+        <li>Diseños personalizados</li>
+        <li>Alta calidad</li>
+      </ul>
+      <div class="service-price">
+        <span>Desde Q50</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Cotización
+      </a>
+    </div>
+
+    <!-- Servicio 5 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <h3>Electrónica Embebida</h3>
+      <p>Desarrollo de sistemas embebidos y automatización industrial.</p>
+      <ul class="service-features">
+        <li>Sistemas de control</li>
+        <li>Automatización</li>
+        <li>Arduino, ESP32, PIC</li>
+        <li>Protocolos industriales</li>
+        <li>HMI y SCADA</li>
+      </ul>
+      <div class="service-price">
+        <span>Desde Q1,500</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Cotización
+      </a>
+    </div>
+
+    <!-- Servicio 6 -->
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h3>Capacitación y Soporte</h3>
+      <p>Cursos, talleres y soporte técnico especializado.</p>
+      <ul class="service-features">
+        <li>Cursos de Arduino/ESP32</li>
+        <li>Talleres IoT</li>
+        <li>Soporte técnico 24/7</li>
+        <li>Documentación completa</li>
+        <li>Asesorías personalizadas</li>
+      </ul>
+      <div class="service-price">
+        <span>Consultar</span>
+      </div>
+      <a href="contacto.html" class="btn-request">
+        <i class="fas fa-paper-plane"></i> Solicitar Información
+      </a>
+    </div>
+
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h2>¿Necesitas un servicio personalizado?</h2>
+    <p>Cuéntanos tu proyecto y te asesoramos sin compromiso</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/50230228637?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" target="_blank" class="btn-primary">
+        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+      </a>
+      <a href="contacto.html" class="btn-primary">
+        <i class="fas fa-envelope"></i> Enviar Mensaje
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <p>2026 Electrónica PYD. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

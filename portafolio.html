@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio - Electrónica PYD</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-purple: #2d1b4e;
+  --secondary-purple: #4a2c6d;
+  --accent-purple: #8b5ac9;
+  --light-purple: #b8a1d6;
+  --gold: #ffd700;
+  --dark-bg: #1a0f2e;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-purple);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-purple);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* Header Page */
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-purple), var(--primary-purple));
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-header .highlight {
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Filtros de categoría */
+.filter-section {
+  max-width: 1400px;
+  margin: 3rem auto 2rem;
+  padding: 0 2rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  color: var(--text-light);
+  border: 2px solid var(--accent-purple);
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--gold), #ffed4e);
+  color: var(--primary-purple);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Contenedor de proyectos */
+.portfolio-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.category-section {
+  margin-bottom: 5rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--accent-purple);
+}
+
+.category-icon {
+  font-size: 2.5rem;
+  color: var(--gold);
+}
+
+.category-header h2 {
+  color: var(--gold);
+  font-size: 2.2rem;
+}
+
+/* Grid de proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  border-radius: 15px;
+  border: 2px solid var(--accent-purple);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(139, 90, 201, 0.5);
+}
+
+.project-image {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, rgba(139, 90, 201, 0.3), rgba(74, 44, 109, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-image i {
+  font-size: 4rem;
+  color: var(--accent-purple);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  font-size: 4rem;
+  color: white;
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(139, 90, 201, 0.3);
+  color: var(--light-purple);
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  border: 1px solid var(--accent-purple);
+}
+
+/* Video embed */
+.video-card {
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.5), rgba(45, 27, 78, 0.8));
+  border-radius: 15px;
+  border: 2px solid var(--accent-purple);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.video-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(139, 90, 201, 0.5);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-info {
+  padding: 1.5rem;
+}
+
+.video-info h3 {
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-info p {
+  color: var(--text-light);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  padding: 3rem 2rem 2rem;
+  border-top: 3px solid var(--accent-purple);
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-container p {
+  color: #666;
+}
+
+/* Ocultar categorías */
+.category-section.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-buttons {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-nav">
+      <img src="logo.png" alt="Electrónica PYD" style="height: 50px;">
+    </a>
+        <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="portafolio.html" class="active">Portafolio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>Nuestro <span class="highlight">Portafolio</span></h1>
+  <p>Explora nuestros proyectos en PCBs, Sistemas Embebidos, Diseños, Corte Láser e Impresión 3D</p>
+</section>
+
+<!-- Filtros -->
+<section class="filter-section">
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="pcbs">PCBs</button>
+    <button class="filter-btn" data-filter="embebidos">Embebidos</button>
+    <button class="filter-btn" data-filter="disenos">Diseños</button>
+    <button class="filter-btn" data-filter="laser">Corte Láser</button>
+    <button class="filter-btn" data-filter="impresion">Impresión 3D</button>
+  </div>
+</section>
+
+<!-- Contenido principal -->
+<div class="portfolio-container">
+
+  <!-- CATEGORÍA: PCBs -->
+  <section class="category-section" data-category="pcbs">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-microchip"></i></div>
+      <h2>Placas de Circuito Impreso (PCBs)</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="pcb-1.jpg" alt="PCB Proyecto"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">PCB 2 Caras SMD + THT</h3>
+          <p class="project-description">
+            Placa de prototipado profesional a 2 caras con componentes SMD y THT simultáneamente. Precisión de 25 mils.
+          </p>
+          <div class="project-tags">
+            <span class="tag">SMD</span>
+            <span class="tag">THT</span>
+            <span class="tag">25 mils</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="pcb-2.jpg" alt="PCB Proyecto"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">PCB para IoT</h3>
+          <p class="project-description">
+            Placa especializada para dispositivos IoT con conectividad WiFi/Bluetooth integrada.
+          </p>
+          <div class="project-tags">
+            <span class="tag">IoT</span>
+            <span class="tag">WiFi</span>
+            <span class="tag">BLE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video de YouTube ejemplo -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <!-- Reemplaza VIDEO_ID con tu ID de YouTube -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Proceso de Fabricación PCB</h3>
+          <p>Mira cómo fabricamos placas de circuito impreso de alta precisión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍA: EMBEBIDOS -->
+  <section class="category-section" data-category="embebidos">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-microchip"></i></div>
+      <h2>Sistemas Embebidos</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="embebido-1.jpg" alt="Sistema Embebido"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Control Industrial IoT</h3>
+          <p class="project-description">
+            Sistema de control y monitoreo para procesos industriales con conectividad en la nube.
+          </p>
+          <div class="project-tags">
+            <span class="tag">ESP32</span>
+            <span class="tag">MQTT</span>
+            <span class="tag">Industria 4.0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="embebido-2.jpg" alt="Sistema Embebido"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Domótica Inteligente</h3>
+          <p class="project-description">
+            Sistema completo de automatización del hogar con control por app móvil y voz.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Home Assistant</span>
+            <span class="tag">Alexa</span>
+            <span class="tag">WiFi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Demo: Sistema IoT en Acción</h3>
+          <p>Demostración de nuestro sistema de control IoT funcionando en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍA: DISEÑOS -->
+  <section class="category-section" data-category="disenos">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-pencil-ruler"></i></div>
+      <h2>Diseños Personalizados</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="diseno-1.jpg" alt="Diseño"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Carcasa Producto Electrónico</h3>
+          <p class="project-description">
+            Diseño 3D de carcasa ergonómica para dispositivo portátil con ventilación optimizada.
+          </p>
+          <div class="project-tags">
+            <span class="tag">CAD</span>
+            <span class="tag">3D</span>
+            <span class="tag">Ergonomía</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="diseno-2.jpg" alt="Diseño"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Diseño PCB Complejo</h3>
+          <p class="project-description">
+            Diseño de PCB multicapa para aplicaciones de alta frecuencia con impedancia controlada.
+          </p>
+          <div class="project-tags">
+            <span class="tag">KiCAD</span>
+            <span class="tag">RF</span>
+            <span class="tag">Multicapa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍA: CORTE LÁSER -->
+  <section class="category-section" data-category="laser">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-cut"></i></div>
+      <h2>Corte Láser</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="laser-1.jpg" alt="Corte Láser"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Llaveros Personalizados</h3>
+          <p class="project-description">
+            Llaveros grabados con diseños personalizados en acrílico y madera de alta calidad.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Acrílico</span>
+            <span class="tag">Madera</span>
+            <span class="tag">Grabado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="laser-2.jpg" alt="Corte Láser"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Caja Organizadora</h3>
+          <p class="project-description">
+            Caja organizadora con compartimentos diseñada y cortada a medida para herramientas.
+          </p>
+          <div class="project-tags">
+            <span class="tag">MDF</span>
+            <span class="tag">Personalizado</span>
+            <span class="tag">Funcional</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Corte Láser en Acción</h3>
+          <p>Proceso de corte y grabado láser de alta precisión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍA: IMPRESIÓN 3D -->
+  <section class="category-section" data-category="impresion">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-cube"></i></div>
+      <h2>Impresión 3D</h2>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="3d-1.jpg" alt="Impresión 3D"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Prototipo Mecánico</h3>
+          <p class="project-description">
+            Prototipo funcional de pieza mecánica con tolerancias precisas para ensamblaje.
+          </p>
+          <div class="project-tags">
+            <span class="tag">PLA</span>
+            <span class="tag">Prototipo</span>
+            <span class="tag">Mecánica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-image"></i>
+          <!-- <img src="3d-2.jpg" alt="Impresión 3D"> -->
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Figura Decorativa</h3>
+          <p class="project-description">
+            Figura personalizada con acabado de alta calidad y detalles finos.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Resin</span>
+            <span class="tag">Alta Resolución</span>
+            <span class="tag">Pintado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Timelapse Impresión 3D</h3>
+          <p>Mira el proceso completo de impresión 3D de una pieza compleja.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <p>2026 Electrónica PYD. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// Sistema de filtrado
+const filterButtons = document.querySelectorAll('.filter-btn');
+const categorySections = document.querySelectorAll('.category-section');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    
+    // Actualizar botones activos
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Mostrar/ocultar categorías
+    categorySections.forEach(section => {
+      if (filter === 'all') {
+        section.classList.remove('hidden');
+      } else {
+        if (section.dataset.category === filter) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      }
+    });
+    
+    // Scroll suave al inicio de proyectos
+    document.querySelector('.portfolio-container').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+</script>
+
+</body>
+</html>
